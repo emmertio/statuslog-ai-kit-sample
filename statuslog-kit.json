@@ -1,0 +1,63 @@
+{
+  "manifestVersion": 1,
+  "name": "sample-kit",
+  "title": "Sample AI kit: weekly status",
+  "description": "A small starter AI kit that writes a weekly status summary from StatusLog work items. Copy it to start your own.",
+  "version": "0.1.0",
+  "triggers": ["weekly status", "write the weekly status summary"],
+  "clients": ["claude-code"],
+  "mainSkill": "weekly-status",
+  "settings": [
+    {
+      "key": "tone",
+      "label": "Tone",
+      "type": "select",
+      "description": "How the summary reads.",
+      "options": [
+        { "value": "concise", "label": "Concise" },
+        { "value": "friendly", "label": "Friendly" }
+      ],
+      "default": "concise"
+    },
+    {
+      "key": "lookbackDays",
+      "label": "Look-back days",
+      "type": "number",
+      "description": "How many days of activity the summary covers.",
+      "default": 7
+    },
+    {
+      "key": "includeBlocked",
+      "label": "Include blocked work",
+      "type": "boolean",
+      "description": "Add a short section for items that look stuck.",
+      "default": true
+    },
+    {
+      "key": "kbUrl",
+      "label": "Notes link",
+      "type": "url",
+      "description": "Optional link to team notes or a handbook, mentioned at the end of the summary.",
+      "placeholder": "https://example.com/handbook"
+    }
+  ],
+  "tools": [
+    {
+      "name": "status_report_outline",
+      "description": "Get the outline to follow when writing a weekly status summary.",
+      "run": { "kind": "instructions", "file": "tools/status-report-outline.md" }
+    },
+    {
+      "name": "week_range",
+      "description": "Print the Monday to Sunday date range of the week containing a date (default: today).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "date": { "type": "string", "description": "A date as YYYY-MM-DD. Defaults to today." }
+        }
+      },
+      "run": { "kind": "script", "file": "scripts/week-range.mjs", "command": "node scripts/week-range.mjs" }
+    }
+  ],
+  "ignore": ["README.md", "LICENSE"]
+}
