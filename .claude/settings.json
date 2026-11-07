@@ -1,1 +1,1 @@
-{ "permissions": { "allow": ["Bash(git log:*)"] } }
+{ "permissions": { "allow": ["Bash(git status)"] } }
