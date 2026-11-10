@@ -1,6 +1,6 @@
 {
   "manifestVersion": 1,
-  "name": "sample-kit",
+  "name": "sample-kit-guided",
   "title": "Sample AI kit: weekly status",
   "description": "A small starter AI kit that writes a weekly status summary from StatusLog work items. Copy it to start your own.",
   "version": "0.1.0",
