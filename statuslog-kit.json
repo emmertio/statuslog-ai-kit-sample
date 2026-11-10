@@ -4,7 +4,8 @@
   "title": "Sample AI kit: weekly status",
   "description": "A small starter AI kit that writes a weekly status summary from StatusLog work items. Copy it to start your own.",
   "version": "0.1.0",
-  "triggers": ["weekly status", "write the weekly status summary"],
+  "triggers": ["weekly status", "write the weekly status summary", "start a status update"],
+  "triggerSkills": { "start a status update": "status-writing" },
   "clients": ["claude-code"],
   "mainSkill": "weekly-status",
   "settings": [
